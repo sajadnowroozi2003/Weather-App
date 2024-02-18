@@ -20,7 +20,30 @@ async function getWeatherData (cityValue){
             throw new Error("Network respons was not ok");
         }
         const data =await response.json();
-        console.log(data);
+        
+        const temperature= Math.round(data.main.temp)
+        // console.log(temperature);
+        const description = data.weather[0].description
+        //  console.log(description);
+
+        const icon = data.weather[0].icon
+        //  console.log(icon);
+
+        const details =[
+            `feels like: ${ Math.round(data.main.feels_like)}`,
+            `Humidity: ${data.main.humidity}`,
+            `Wind Speed:${data.wind.speed}`,
+        ]
+
+        weatherDataEl.querySelector(".icon").innerHTML=`<img src="http://openweathermap.org/img/wn/${icon}.png" alt="Weather Icon">`;
+        weatherDataEl.querySelector(".temperature").textContent=` ${temperature}°C`
+        weatherDataEl.querySelector(".description").textContent=`${description}`
+
+
+        weatherDataEl.querySelector(".details").innerHTML=details.map ((detail)=>`<div>${detail}</div>`).join("");
+
+
+
     } catch (error) {
         
     }
