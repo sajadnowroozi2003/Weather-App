@@ -31,8 +31,8 @@ async function getWeatherData (cityValue){
 
         const details =[
             `feels like: ${ Math.round(data.main.feels_like)}`,
-            `Humidity: ${data.main.humidity}`,
-            `Wind Speed:${data.wind.speed}`,
+            `Humidity: ${data.main.humidity}%`,
+            `Wind Speed:${data.wind.speed}m/s`,
         ]
 
         weatherDataEl.querySelector(".icon").innerHTML=`<img src="http://openweathermap.org/img/wn/${icon}.png" alt="Weather Icon">`;
