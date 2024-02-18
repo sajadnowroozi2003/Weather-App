@@ -33,7 +33,7 @@ async function getWeatherData (cityValue){
             `feels like: ${ Math.round(data.main.feels_like)}`,
             `Humidity: ${data.main.humidity}%`,
             `Wind Speed:${data.wind.speed}m/s`,
-        ]
+        ];
 
         weatherDataEl.querySelector(".icon").innerHTML=`<img src="http://openweathermap.org/img/wn/${icon}.png" alt="Weather Icon">`;
         weatherDataEl.querySelector(".temperature").textContent=` ${temperature}°C`
@@ -46,5 +46,13 @@ async function getWeatherData (cityValue){
 
     } catch (error) {
         
+        weatherDataEl.querySelector(".icon").innerHTML="";
+        weatherDataEl.querySelector(".temperature").textContent=""
+        weatherDataEl.querySelector(".description").textContent="An Error happened , please try again leter"
+
+
+        weatherDataEl.querySelector(".details").innerHTML="";
+
+
     }
 }
